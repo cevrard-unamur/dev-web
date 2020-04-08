@@ -1,0 +1,33 @@
+<html>
+
+<head>
+<title>Index page</title>
+</head>
+
+<body>
+
+  {% if current_user.is_authenticated %}
+  <h1>Hi, {{ current_user.name }}!</h1>
+  {% endif %}
+
+  
+  <h2> This is the Index page </h2>
+  <p> You need to login to be able to surf thse pages:</p>
+  <ul>
+    <li> <a href="{{ url_for('page_a') }}">Click here to go to page A</a> </li>
+    <li> <a href="{{ url_for('page_b') }}">Click here to go to page B</a> </li>
+  </ul>
+  
+  <div>
+    Lecture 5 - WTForm and Flask_login<br>
+    <a href="{{ url_for('main') }}">Home</a>
+    {% if current_user.is_anonymous %} <!-- is going to be True only when the user is not logged in. -->
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+  </div>
+
+</body>
+
+</html>

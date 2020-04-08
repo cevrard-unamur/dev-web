@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<title>Index page</title>
+</head>
+
+<body>
+  <h1> This is the show message page of user {{ current_user.get_id() }} </h1>
+
+  <ul>
+    {% for item in text_list %}
+    <li>{{ item.text }}, {{ item.time_stamp }}, {{ item.users_id }},  {{ item.author.username }} </li>
+    {% endfor %}
+  </ul>
+  
+  
+  <div>
+    Lecture 6 - WTForm, Flask_login, and DataBase <br>
+    <a href="{{ url_for('main') }}">Home</a>
+    {% if current_user.is_anonymous %} <!-- is going to be True only when the user is not logged in. -->
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+  </div>
+  
+</body>
+
+</html>

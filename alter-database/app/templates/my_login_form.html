@@ -1,0 +1,47 @@
+<html>
+
+<head>
+<title>Login form with WTF</title>
+</head>
+
+<body>
+
+  <h1> This is the Login page </h1>
+
+  {% if current_user.is_authenticated == false %}
+  <p> You are not logged into the system. Please login with your
+    creditials or if you do not have credentials yet, please register
+    first.</p>
+  {% endif %}
+  
+  <p>New User? <a href="{{ url_for('register') }}">Click to Register!</a></p>
+  
+{% with messages = get_flashed_messages( with_categories=true, category_filter=['info'] ) %}
+{% if messages %}
+<ul class='flashes'>
+{% for c, m in messages %}
+<li> {{ c }} : {{ m }} </li>
+{% endfor %}
+</ul>
+{% endif %}
+{% endwith %}
+
+  
+{% if form.errors %}
+{% for message in form.username.errors %}
+<div class="field_error">{{ message }}</div>
+{% endfor %}
+{% endif %}
+
+<form method="POST" action="/login" novalidate>
+{{ form.csrf_token }}  <!-- {{ form.hidden_tag() }}  -->
+{{ form.username.label }} {{ form.username(size=32) }}<br>
+{{ form.password.label }} {{ form.password(size=32) }}<br>
+{{ form.submit }}
+</form>
+
+<a href="link.html">This is a broken link</a>
+
+</body>
+
+</html>

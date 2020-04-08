@@ -1,0 +1,22 @@
+<html>
+
+<head>
+<title>Index page</title>
+</head>
+
+<body>
+  <h1> This is the page </h1>
+  
+  <div>
+    Lecture 5 - WTForm and Flask_login<br>
+    <a href="{{ url_for('main') }}">Home</a>
+    {% if current_user.is_anonymous %} <!-- is going to be True only when the user is not logged in. -->
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+  </div>
+
+</body>
+
+</html>

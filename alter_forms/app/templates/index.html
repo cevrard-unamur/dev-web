@@ -1,0 +1,29 @@
+<html>
+
+<head>
+<title>Index page</title>
+</head>
+
+<body>
+  <h1> This is the Index page </h1>
+  {% if (user==None) %}
+  <p> I do not know you </p>
+    {% else %}
+  <p> Hello {{ user }};</p>
+  {% endif %}
+  
+  <p> You need to login to be able to surf thse pages:</p>
+  <ul>
+    <li> <a href="{{ url_for('page_a') }}">Click here to go to page A</a> </li>
+    <li> <a href="{{ url_for('page_b') }}">Click here to go to page B</a> </li>
+  </ul>
+  
+  <div>
+    Lecture 5 - WTForm and Flask_login<br>
+    <a href="{{ url_for('main') }}">Home</a>
+    <a href="{{ url_for('login') }}">Login</a>
+  </div>
+
+</body>
+
+</html>

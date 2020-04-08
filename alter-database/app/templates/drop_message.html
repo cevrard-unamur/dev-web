@@ -1,0 +1,30 @@
+<html>
+
+<head>
+<title>Index page</title>
+</head>
+
+<body>
+  <h1> This is the message page </h1>
+
+
+  <form method="POST" action="/drop_message" novalidate>
+    {{ form.csrf_token }}  <!-- {{ form.hidden_tag() }}  -->
+    {{ form.text.label }} {{ form.text(size=200) }}<br>
+    {{ form.submit }}
+  </form>
+  
+  
+  <div>
+    Lecture 6 - WTForm, Flask_login, and DataBase <br>
+    <a href="{{ url_for('main') }}">Home</a>
+    {% if current_user.is_anonymous %} <!-- is going to be True only when the user is not logged in. -->
+    <a href="{{ url_for('login') }}">Login</a>
+    {% else %}
+    <a href="{{ url_for('logout') }}">Logout</a>
+    {% endif %}
+  </div>
+  
+</body>
+
+</html>
