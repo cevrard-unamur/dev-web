@@ -1,0 +1,33 @@
+\documentclass{article}
+
+% Formatting
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage[titletoc,title]{appendix}
+
+% Title content
+\title{Architecture des applications web - TP 1}
+\author{Cédric Evrard}
+\date{10 avril 2020}
+
+\begin{document}
+\maketitle
+
+Le fichier d'entré de l'application se nomme $flask\_engine.py$. Un fichier $bash$ nommé $run-dev.sh$ permet de lancer l'application en mode développement directement, sans avoir à configurer de variable spécifique. 
+
+\section{Utilisation de Flask}
+L'utilisation de Flask permet de ne pas avoir à implémenter toute la gestion d'un serveur web en Python. En effet, la gestion des routes (via le décorateur $@app.route()$), des affichages des pages web (via les méthodes $render\_template()$ ou $redirect()$) ou encore des informations de la requête (via l'object $request$) sont déjà géré via Flask.
+
+Sans l'ensemble de ces éléments, il serait très compliqué d'implémenter un serveur web. Toutes cette gestion devrait alors  être faite manuellement, ce qui représente un travail titanesque. Pour exemple, le projet Flask possède plus de 500 contributeurs.
+
+Enfin, le $render\_template()$ gère Jinja et donc ne pas utiliser Flask demanderait, en plus de devoir gérer le côté serveur, de mettre en place la gestion du rendu des pages créé avec le langage de templating Jinja.
+
+\section{Apprentissage}
+
+L'apprentissage principal a été Python. Il s'agissait d'un langage que je n'avais jamais utilisé et donc j'ai pu le découvrir à travers l'utilisation du framework Flask.  
+
+\section{Difficultés}
+
+La plus grosse difficulté durant ce premier TP a été de s'habituer à la syntaxe de Python. Ayant l'habitude de travailler en JavaScript et en C\#, les différences sont assez importantes.
+
+\end{document}
