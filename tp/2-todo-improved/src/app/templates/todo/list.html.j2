@@ -29,7 +29,7 @@
                                 {% if user %}
                                     <a class="text-{{ 'secondary' if task.status == 0 else 'success' }}" href="/admin/{{ user.id }}/status/{{ task.id }}">
                                 {% else %}
-                                    <a class="text-secondary" href="/status/{{ task.id }}">
+                                    <a class="text-{{ 'secondary' if task.status == 0 else 'success' }}" href="/status/{{ task.id }}">
                                 {% endif %}
                                 {% if task.status == 0 %}
                                     <!-- Icone checkbox décoché -->
