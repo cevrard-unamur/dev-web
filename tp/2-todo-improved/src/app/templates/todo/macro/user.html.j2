@@ -1,0 +1,11 @@
+{% macro user_info(user) %}
+{% if user %}
+<div class="row">
+    <div class="col-md-12">
+        <div class="breadcrumb">
+            <span class="breadcrumb-item active">Tâche de {{ user.username }} ({{ user.firstname }} {{ user.lastname }})<span>
+        <div>
+    </div>
+</div>
+{% endif %}
+{% endmacro %}

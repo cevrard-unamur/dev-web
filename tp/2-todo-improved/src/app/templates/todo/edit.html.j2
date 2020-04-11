@@ -1,18 +1,24 @@
 {% from "todo/macro/task-form.html.j2" import task_form with context %}
+{% from "todo/macro/user.html.j2" import user_info with context %}
 {% from "macro/form-error.html.j2" import form_error with context %}
 {% extends "layout.html.j2" %}
 {% block head %}
     <title>ToDo - Editer</title>
 {% endblock %}
 {% block body %}
+    {{ user_info(user) }}
     <div class="row">
         <div class="col-md">
-            <p>Ajouter une nouvelle tâche</p>
+            <p>Edition d'une tâche</p>
         </div>
     </div>
     <div class="row">
         <div class="col-md">
+            {% if user %}
+            <form method="POST" action="/admin/{{ user.id }}/edit/{{ form.id.data }}" novalidate class="mb-4">
+            {% else %}
             <form method="POST" action="/edit/{{ form.id.data }}" novalidate class="mb-4">
+            {% endif %}
                 {{ form.csrf_token }}
                 {{ task_form(form) }}
             </form>

@@ -13,6 +13,6 @@ db.create_all()
 
 # create the default administrator accout
 print('The SuperAdmin account is created')
-UserDataAccess.addUser('admin', 'password', 'Super', 'Admin', datetime.datetime.now(), 'admin@evrard.io', 2)
+UserDataAccess.add_user('admin', 'password', 'Super', 'Admin', datetime.datetime.now(), 'admin@evrard.io', 2)
 
 print('The database has been created')

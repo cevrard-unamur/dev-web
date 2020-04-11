@@ -20,9 +20,12 @@ def login():
     
     form = LoginForm()
     if form.validate_on_submit():
-        user = User.query.filter_by(username=form.username.data).first()
+        user = UserDataAccess.get_by_username(form.username.data)
         if (user is None) or (not user.check_password(form.password.data)):
             flash('Connexion impossible. Veuillez vérifier votre nom d\'utilisateur et mot de passe', 'danger')
+            return redirect(url_for('login'))
+        if (user.is_locked):
+            flash('Votre compte est bloqué. Veuillez contacter un administrateur', 'danger')
             return redirect(url_for('login'))
         login_user(user)
         next_page = request.args.get('next')
@@ -38,15 +41,22 @@ def register():
         return redirect(url_for('/'))
     form = RegistrationForm()
     if form.validate_on_submit():
-        UserDataAccess.addUser(
-            form.username.data, 
-            form.password.data, 
-            form.firstname.data,
-            form.lastname.data,
-            form.birthday.data,
-            form.email.data)
-        flash('Votre compte a été créé, vous pouvez maintenant vous connecter', 'success')
-        return redirect(url_for('login'))
+        user = UserDataAccess.get_by_username(form.username.data)
+        logging.error(user is None)
+        if user is None:
+            UserDataAccess.add_user(
+                form.username.data, 
+                form.password.data, 
+                form.firstname.data,
+                form.lastname.data,
+                form.birthday.data,
+                form.email.data)
+            flash('Votre compte a été créé, vous pouvez maintenant vous connecter', 'success')
+            return redirect(url_for('login'))
+        else :
+            flash('Un compte existe déjà avec ce nom d\'utilisateur', 'danger')
+            return render_template('login/registration.html.j2', form = form)
+            
     return render_template('login/registration.html.j2', form = form)
 
 @app.route('/logout')

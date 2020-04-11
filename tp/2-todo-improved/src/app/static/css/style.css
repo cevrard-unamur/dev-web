@@ -11,13 +11,15 @@ html, body {
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   
-.text-success,
-.text-danger,
-.text-info {
+table .text-success svg,
+table .text-danger svg,
+table .text-info svg,
+table .text-dark svg,
+table .text-warning svg {
     font-size: 1.5rem;
 }
 
-.text-secondary {
+table .text-secondary {
     font-size: 1.3rem;
     position: relative;
     left: 2px;
@@ -29,4 +31,17 @@ table tr th:first-of-type {
 
 table tr th:last-of-type {
   width: 100px;
+}
+
+table.admin tr th:last-of-type {
+  width: 150px;
+}
+
+.help .text-success svg,
+.help .text-danger svg,
+.help .text-info svg,
+.help .text-dark svg,
+.help .text-warning svg{
+    font-size: 1.5rem;
+    margin-right: 10px;
 }

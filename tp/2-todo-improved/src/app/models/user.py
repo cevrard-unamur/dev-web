@@ -14,16 +14,17 @@ class User(UserMixin, db.Model):
     lastname        = db.Column(db.String(40), nullable=False)
     birthday        = db.Column(db.DateTime(), nullable=False)
     email           = db.Column(db.String(60), nullable=False)
-    accountLevel    = db.Column(db.Integer, nullable=False, default=0)
+    account_level   = db.Column(db.Integer, nullable=False, default=0)
+    is_locked       = db.Column(db.Boolean, nullable=False, default=False)
     tasks           = db.relationship('Task', backref='author', lazy='dynamic')
 
-    def __init__(self, username, firstname, lastname, birthday, email, accountLevel):
+    def __init__(self, username, firstname, lastname, birthday, email, account_level):
         self.username = username
         self.firstname = firstname
         self.lastname = lastname
         self.birthday = birthday
         self.email = email
-        self.accountLevel = accountLevel
+        self.account_level = account_level
 
     def set_password(self, password):
         self.password_hash = generate_password_hash(password)
