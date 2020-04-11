@@ -1,0 +1,55 @@
+{% extends "layout.html.j2" %}
+{% block head %}
+    <title>ToDo - S'enregistrer</title>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="h1">Inscription</h1>
+        </div>
+        <div class="col-md-6 offset-md-3 mt-4">
+            <form method="POST" action="/register" novalidate class="mb-4">
+                {{ form.csrf_token }}  <!-- {{ form.hidden_tag() }}  -->
+                <div class="form-group">
+                    <label>{{ form.username.label }}</label>
+                    {{ form.username(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.password.label }}</label>
+                    {{ form.password(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.firstname.label }}</label>
+                    {{ form.firstname(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.lastname.label }}</label>
+                    {{ form.lastname(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.birthday.label }} (format : YYYY-MM-DD)</label>
+                    {{ form.birthday(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.email.label }}</label>
+                    {{ form.email(class_='form-control') }}
+                </div>
+                {{ form.submit(class_='btn btn-primary btn-lg btn-block') }}
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true, category_filter=['danger']) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-danger text-left">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% for field, errors in form.errors.items() %}
+                <div class="alert alert-danger text-left">
+                     {{ ', '.join(errors) }}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

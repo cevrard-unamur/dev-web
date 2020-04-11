@@ -1,0 +1,43 @@
+{% from "macro/menu.html.j2" import nav_link with context %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="shortcut icon" type="image/png" href="{{ url_for('static', filename='favicon.ico') }}"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block head %}
+      <title>Learning Flask - ToDo</title>
+    {% endblock %}
+</head>
+
+<body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">ToDo</a>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          {% if current_user.is_authenticated == true %}
+            {{ nav_link('index', 'Accueil') }}
+            {{ nav_link('add', 'Ajouter') }}
+          {% endif %}
+        </ul>
+        {% if current_user.is_authenticated == true %}
+          <ul class="navbar-nav my-2 my-lg-0">
+            {{ nav_link('logout', 'Se déconnecter') }}
+          </ul>
+        {% else %}
+          <ul class="navbar-nav my-2 my-lg-0">
+            {{ nav_link('login', 'Se connecter') }}
+            {{ nav_link('register', 'S\'enregistrer') }}
+          </ul>
+        {% endif %}
+      </div>
+    </nav>
+    <div class="container mt-3">
+      {% block body %}
+      {% endblock %}
+    </div>
+</body>
+
+</html>

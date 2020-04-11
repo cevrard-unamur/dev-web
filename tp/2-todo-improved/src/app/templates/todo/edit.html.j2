@@ -1,0 +1,28 @@
+{% extends "layout.html.j2" %}
+{% block head %}
+    <title>ToDo - Editer</title>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md">
+            <p>Ajouter une nouvelle tâche</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md">
+            <form method="POST" action="/edit/{{ task.id }}">
+                <div class="form-group">
+                    <label for="title">Titre</label>
+                    <input type="text" class="form-control" id="title" name="title" value="{{ task.title }}">
+                </div>
+                <button type="submit" class="btn btn-primary">Editer</button>
+                <a href="{{ url_for('index') }}" class="btn btn-secondary">Retour</a>
+            </form>
+            {% if error %}
+                <div class="alert alert-danger mt-3" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends "layout.html.j2" %}
+{% block head %}
+    <title>ToDo - Se connecter</title>
+{% endblock %}
+{% block body %}
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <h1 class="h1">Connexion</h1>
+        </div>
+        <div class="col-md-6 offset-md-3 text-center mt-4">
+            <form method="POST" action="/login" novalidate class="mb-4">
+                {{ form.csrf_token }}  <!-- {{ form.hidden_tag() }}  -->
+                <div class="form-group">
+                    <label>{{ form.username.label }}</label>
+                    {{ form.username(class_='form-control') }}
+                </div>
+                <div class="form-group">
+                    <label>{{ form.password.label }}</label>
+                    {{ form.password(class_='form-control') }}
+                </div>
+                {{ form.submit(class_='btn btn-primary btn-lg btn-block') }}
+            </form>
+            {% with messages = get_flashed_messages(with_categories=true, category_filter=['danger']) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                        <div class="alert alert-danger text-left">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            {% for field, errors in form.errors.items() %}
+                <div class="alert alert-danger text-left">
+                     {{ ', '.join(errors) }}
+                </div>
+            {% endfor %}
+            <a href="{{ url_for('register') }}" class="btn btn-link">
+                Se créer un compte
+            </a>
+        </div>
+    </div>
+{% endblock %}
