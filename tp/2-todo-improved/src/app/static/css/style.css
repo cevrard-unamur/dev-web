@@ -11,7 +11,9 @@ html, body {
       "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   }
   
-.text-success {
+.text-success,
+.text-danger,
+.text-info {
     font-size: 1.5rem;
 }
 
@@ -26,5 +28,5 @@ table tr th:first-of-type {
 }
 
 table tr th:last-of-type {
-  width: 200px;
+  width: 100px;
 }

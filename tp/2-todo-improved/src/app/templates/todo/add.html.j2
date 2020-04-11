@@ -1,3 +1,5 @@
+{% from "todo/macro/task-form.html.j2" import task_form with context %}
+{% from "macro/form-error.html.j2" import form_error with context %}
 {% extends "layout.html.j2" %}
 {% block head %}
     <title>ToDo - Ajouter</title>
@@ -10,18 +12,11 @@
     </div>
     <div class="row">
         <div class="col-md">
-            <form method="POST" action="/add">
-                <div class="form-group">
-                    <label for="title">Titre</label>
-                    <input type="text" class="form-control" id="title" name="title">
-                </div>
-                <button type="submit" class="btn btn-primary">Sauvegarder</button>
+            <form method="POST" action="/add" novalidate class="mb-4">
+                {{ form.csrf_token }}
+                {{ task_form(form) }}
             </form>
-            {% if error %}
-                <div class="alert alert-danger mt-3" role="alert">
-                    {{ error }}
-                </div>
-            {% endif %}
+            {{ form_error(form) }}
         </div>
     </div>
 {% endblock %}

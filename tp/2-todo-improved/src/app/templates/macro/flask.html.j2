@@ -1,0 +1,11 @@
+{% macro flash_messages(filter) %}
+{% with messages = get_flashed_messages(with_categories=true, category_filter=[filter]) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ filter }} text-left">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+{% endwith %}
+{% endmacro %}

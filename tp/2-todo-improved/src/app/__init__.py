@@ -11,3 +11,10 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 from app import routes
+
+from app import login_manager
+from app.models.user import User
+
+@login_manager.user_loader
+def load_user(userid):
+    return User.query.get(int(userid))

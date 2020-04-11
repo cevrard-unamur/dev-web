@@ -45,9 +45,9 @@ def register():
             form.lastname.data,
             form.birthday.data,
             form.email.data)
-        flash('Votre compte à été créé, vous pouvez maintenant vous connecter', 'success')
+        flash('Votre compte a été créé, vous pouvez maintenant vous connecter', 'success')
         return redirect(url_for('login'))
-    return render_template('login/registration.html.j2', title='Register', form=form)
+    return render_template('login/registration.html.j2', form = form)
 
 @app.route('/logout')
 @login_required
