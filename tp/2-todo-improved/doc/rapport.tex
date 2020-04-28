@@ -4,6 +4,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage[margin=1in]{geometry}
 \usepackage[titletoc,title]{appendix}
+\usepackage{hyperref}
 
 % Title content
 \title{Architecture des applications web - TP 1}
@@ -13,10 +14,28 @@
 \begin{document}
 \maketitle
 
-Le fichier d'entré de l'application se nomme $flask\_engine.py$. Un fichier $bash$ nommé $run-dev.sh$ permet de lancer l'application en mode développement directement, sans avoir à configurer de variable spécifique. 
+Le fichier d'entré de l'application se nomme $flask\_engine.py$. Un fichier $bash$ nommé $run-dev.sh$ permet de lancer l'application en mode développement directement, sans avoir à configurer de variable spécifique.
 
 \section{Utilisation de Flask}
+L'utilisation de Flask-Form permet de facilement créer et gérer des formulaires, sans avoir à jouer avec l'object $request.form$.
+
+Ensuite, SQLAlchemy permet de facilement travailler avec la base de données, sans avoir à créer de requête SQL (et donc devoir potentiellement devoir apprendre un autre langage).
+
+
+
 \section{Apprentissage}
+Les concepts de ce TP m'étant connu (gestion de formulaire, ORM), l'apprentissage principale était lié à l'utilisation de Flask et des éléments propre à celui-ci ou à ses packages.
+
 \section{Difficultés}
+Il n'y pas de difficulté particulière pour cette deuxième partie. L'utilisation de Flask et Python est plus déjà plus simple depuis la création de l'application pour le TP1.
+
+Le seul petit problème à été l'intégration de Flask-Mail. Même si celui-ci est très simple, il existe deux documentations différentes pour le packages Flask-Mail (\hyperref[https://pythonhosted.org/Flask-Mail/]{https://pythonhosted.org/Flask-Mail/} et\\ \hyperref[https://pythonhosted.org/flask-mail/]{https://pythonhosted.org/flask-mail/}). Ce qui m'a posé quelques problèmes ayant commencé en utilisant la mauvaise documentation.
+
+\section{Information}
+Un compte \emph{SuperAdmin} existe et permet d'accéder à l'ensemble des fonctionnalités de l'application. Celui-ci est accessible via le login \textbf{admin} et le mot de passe \textbf{password}. Ce compte ne peut être bloqué ou supprimé, et on ne peut changer son statut de \emph{SuperAdmin}.
+
+Un compte administrateur ne peut pas lui-même se supprimer ou se bloquer, et ne peut lui-même changer son statut d'administrateur.
+
+Lors de l'inscription d'un utilisateur, un email est envoyé à l'adresse email qu'il a renseigné. Il n'y a pas de configuration particulière dans le fichier $config.py$ pour Flask-Mail car le serveur SMTP utilisé pour les tests était hébergé sur ma machine via \emph{mailslurper}.
 
 \end{document}
