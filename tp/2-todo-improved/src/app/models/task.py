@@ -1,5 +1,4 @@
 from app import db
-from flask_sqlalchemy import SQLAlchemy
 
 # Modèle représentant une tâche.
 # Celle-ci est composée d'un identifiant (généré automatiquement), d'un titre et d'un status
