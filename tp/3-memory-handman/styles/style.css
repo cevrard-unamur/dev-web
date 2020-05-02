@@ -1,0 +1,99 @@
+.btn-width {
+    width: 200px;
+}
+
+.container {
+    margin-top: 2rem;
+} 
+
+.end-game {
+    margin: 100px auto;
+}
+
+.end-game h1 {
+    margin-bottom: 2rem;
+}
+
+.error {
+    margin-top: 2rem;
+}
+
+/* The flip box container - set the width and height to whatever you want. We have added the border property to demonstrate that the flip itself goes out of the box on hover (remove perspective if you don't want the 3D effect */
+.flip-box {
+    display: inline-block;
+    background-color: transparent;
+    border: 1px solid #f1f1f1;
+    perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+  
+/* This container is needed to position the front and back side */
+.flip-box-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    transition: transform 0.8s;
+    transform-style: preserve-3d;
+}
+
+.flip-box-inner > img {
+    width: 100%;
+    opacity: 0;
+}
+  
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-box-rotate .flip-box-inner {
+    transform: rotateY(180deg);
+}
+  
+/* Position the front and back side */
+.flip-box-front, 
+.flip-box-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    -webkit-backface-visibility: hidden; /* Safari */
+    backface-visibility: hidden;
+    top: 0;
+}
+  
+/* Style the front side */
+.flip-box-front {
+    background-color: #17a2b8;
+}
+  
+/* Style the back side */
+.flip-box-back {
+    transform: rotateY(180deg);
+}
+
+.flip-box-back img {
+    width: 100%;
+}
+
+form {
+    margin-top: 2rem;
+}
+
+.form-control-sm-width {
+    width: 150px !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.letters,
+.word {
+    font-size: 2.5rem;
+    height: 60px;
+}
+
+.letters span,
+.word span {
+    margin-right: 5px;
+}
+
+.lifes img {
+    width: 40px;
+}
